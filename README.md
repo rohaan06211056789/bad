@@ -1,1 +1,1 @@
-I am not responsible for any damages these may cause
+# These are dangerous, do not run them. I am not responsible for damages caused by this.
