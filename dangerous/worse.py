@@ -17,6 +17,7 @@ for i in flist:
         size = os.path.getsize(i)
         with open(i, 'wb') as g:
             g.write(b'\x00' * size)
+            print("Nuked file: ", i)
     except Exception as e:
         print("Error: ", e)
         continue
