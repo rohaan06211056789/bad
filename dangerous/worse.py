@@ -13,6 +13,10 @@ for f in os.listdir():
                 file_path = os.path.join(root, file)
                 flist.append(file_path)
 for i in flist:
-    size = os.path.getsize(i)
-    with open(i, 'wb') as g:
-        g.write(b'\x00' * size)
+    try:
+        size = os.path.getsize(i)
+        with open(i, 'wb') as g:
+            g.write(b'\x00' * size)
+    except Exception as e:
+        print("Error: ", e)
+        continue
