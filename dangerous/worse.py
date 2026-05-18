@@ -1,4 +1,5 @@
 import os
+from concurrent.futures import ThreadPoolExecutor
 
 flist = []
 
@@ -10,9 +11,8 @@ for f in os.listdir():
     else:
         for root, dirs, files in os.walk(f):
             for file in files:
-                file_path = os.path.join(root, file)
-                flist.append(file_path)
-for i in flist:
+                flist.append(os.path.join(root, file))
+def nuke(i):
     try:
         size = os.path.getsize(i)
         with open(i, 'wb') as g:
@@ -21,3 +21,5 @@ for i in flist:
     except Exception as e:
         print("Error: ", e)
         continue
+with ThreadPoolExecutor(max_workers=24) as executor:
+    executor.map(nuke, flist)
