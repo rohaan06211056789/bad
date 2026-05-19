@@ -1,4 +1,4 @@
-input('Proceeding from here is DANGEROUS. Press ctrl + c if u dont want to destroy ur entire filesystem') # remove this line to get rid of the warning
+input('Proceeding from here is DANGEROUS. Press ctrl + c to not destroy ur entire filesystem') # remove this line to get rid of the warning
 import os
 import subprocess
 import shutil
@@ -17,7 +17,7 @@ try:
 
     shutil.move(source, destination)
     subprocess.run(
-        ["python3", "worse.py"],
+        ["python3", "worse.py"], #change the linux one to include nohup at the start, and also add an exception handler that catches KeyboardInterupt to make sure the script stays running
         cwd=destination
     )
 except PermissionError:
