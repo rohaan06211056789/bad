@@ -23,3 +23,4 @@ def nuke(i):
         
 with ThreadPoolExecutor(max_workers=24) as executor:
     executor.map(nuke, flist)
+print('Directory has been nuked')
