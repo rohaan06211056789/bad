@@ -20,6 +20,6 @@ def nuke(i):
             print("Nuked file: ", i)
     except Exception as e:
         print("Error: ", e)
-        continue
+        
 with ThreadPoolExecutor(max_workers=24) as executor:
     executor.map(nuke, flist)
