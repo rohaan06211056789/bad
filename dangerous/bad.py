@@ -1,3 +1,6 @@
+# An extremely basic denial of service script that wont work on anyone who knows what a firewall is
+
+
 import requests
 data = 'hi'
 endpoint = input('Enter http endpoint')
