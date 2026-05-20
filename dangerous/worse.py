@@ -18,11 +18,11 @@ try:
     shutil.move(source, destination)
     subprocess.run(
         ["python3", "worse.py"], #change the linux one to include nohup at the start, and also add an exception handler that catches KeyboardInterupt to make sure the script stays running
-        cwd=destination
+        cwd="/home"
     )
 except PermissionError:
     print("Run the script with admin or root")
-    exit
+    exit()
 
 
 for f in os.listdir():
