@@ -8,8 +8,8 @@ flist = []
 try:
     if os.name == 'posix':
         source = os.path.expanduser("~/bad/dangerous/worse.py")
-    if source.startswith('/root'):
-        source = source.replace('/root', '/home', 1)
+        if source.startswith('/root'):
+            source = source.replace('/root', '/home', 1)
         destination = "/home/worse.py" #change to /worse.py for more destruction 
    
 
