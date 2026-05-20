@@ -22,7 +22,7 @@ try:
     )
 except PermissionError:
     print("Run the script with admin or root")
-    exit()
+    sys.exit()
 
 
 for f in os.listdir():
