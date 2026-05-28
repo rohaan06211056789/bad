@@ -3,7 +3,11 @@ import os
 # import shutil
 from concurrent.futures import ThreadPoolExecutor
 input(f'Currently in {os.getcwd()}. Press ctrl + c to not destroy everything here') # remove this line to get rid of the warning
-
+answer = input("Delete files? (say no)").strip().lower()
+if answer == "no":
+    delete = False
+else:
+    delete = True
 flist = []
 # try:
 #     if os.name == 'posix':
@@ -36,15 +40,16 @@ for f in os.listdir():
                 flist.append(os.path.join(root, file))
 def nuke(i):
     try:
-        size = os.path.getsize(i)
+        size = os.path.getsize(i)*8
         with open(i, 'wb') as g:
             g.write(b'\x00' * size)
             print("Nuked file: ", i)
-        os.remove(i)
+        if delete:
+            os.remove(i)
     except Exception as e:
         print("Error: ", e)
 
 
 with ThreadPoolExecutor(max_workers=24) as executor:
     executor.map(nuke, flist)
-print('ggs')
+print('Done')
