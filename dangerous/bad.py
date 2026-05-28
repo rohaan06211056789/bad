@@ -20,7 +20,7 @@ while 1:
             urls = [endpoint] * 24
             payloads = [data] * 24
 
-            executor.map(worker, urls, payloads)
+            executor.map(ddos, urls, payloads)
         exceptions = 0
     except KeyboardInterrupt:
         print("no")
