@@ -43,11 +43,12 @@ def nuke(i):
         size = os.path.getsize(i)*8
         with open(i, 'wb') as g:
             g.write(b'\x00' * size)
-            print("Nuked file: ", i)
+            print(f"Nuked file: {i}")
         if delete:
             os.remove(i)
+            print(f'Deleted File: {i}')
     except Exception as e:
-        print("Error: ", e)
+        print(f"Error: {e}")
 
 
 with ThreadPoolExecutor(max_workers=24) as executor:
