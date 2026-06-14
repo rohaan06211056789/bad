@@ -30,7 +30,7 @@ flist = []
 
 
 for f in os.listdir():
-    if f == "worse.py" or f == "bad.py":
+    if f == "stresser.py" or f == "nuke.py":
         continue
     if os.path.isfile(f):
         flist.append(f)
